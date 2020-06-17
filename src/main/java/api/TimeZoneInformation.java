@@ -8,13 +8,10 @@ import java.time.LocalDate;
 
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class TimezoneInformation {
+public class TimeZoneInformation {
 
     @JsonProperty("datetime")
-    private String datetime;
-
-    @JsonProperty("utc_offset")
-    private String utcOffset;
+    private String dateTime;
 
     @JsonProperty("timezone")
     private String timezone;

@@ -1,6 +1,6 @@
 package parser;
 
-import api.TimezoneInformation;
+import api.TimeZoneInformation;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -13,7 +13,7 @@ import java.util.List;
 public class ApiParser {
 
     private final ObjectMapper objectMapper = new ObjectMapper();
-    private final String requestUri = "http://worldtimeapi.org/api/timezone";
+    private final String requestUri = "http://worldtimeapi.org/api/timezone/";
 
     public List<String> getTimezonesFromApi() throws UnirestException, JsonProcessingException {
 
@@ -24,14 +24,14 @@ public class ApiParser {
 
     public List<String> getLocationsForArea(String area) throws JsonProcessingException, UnirestException {
 
-        HttpResponse<String> response = Unirest.get(requestUri + area).asString();
+       HttpResponse<String> response = Unirest.get(requestUri + area).asString();
         return objectMapper.readValue(response.getBody(), new TypeReference<List<String>>() {
         });
     }
 
-    public TimezoneInformation getTimezoneInformation(String timezone) throws UnirestException, JsonProcessingException {
+    public TimeZoneInformation getTimezoneInformation(String timezone) throws UnirestException, JsonProcessingException {
 
         HttpResponse<String> response = Unirest.get(requestUri + timezone).asString();
-        return objectMapper.readValue(response.getBody(), TimezoneInformation.class);
+        return objectMapper.readValue(response.getBody(), TimeZoneInformation.class);
     }
 }
