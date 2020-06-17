@@ -4,9 +4,9 @@ import api.TimeZoneInformation;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.mashape.unirest.http.HttpResponse;
-import com.mashape.unirest.http.Unirest;
-import com.mashape.unirest.http.exceptions.UnirestException;
+import kong.unirest.HttpResponse;
+import kong.unirest.Unirest;
+import kong.unirest.UnirestException;
 
 import java.util.List;
 
@@ -18,13 +18,6 @@ public class ApiParser {
     public List<String> getTimezonesFromApi() throws UnirestException, JsonProcessingException {
 
         HttpResponse<String> response = Unirest.get(requestUri).asString();
-        return objectMapper.readValue(response.getBody(), new TypeReference<List<String>>() {
-        });
-    }
-
-    public List<String> getLocationsForArea(String area) throws JsonProcessingException, UnirestException {
-
-       HttpResponse<String> response = Unirest.get(requestUri + area).asString();
         return objectMapper.readValue(response.getBody(), new TypeReference<List<String>>() {
         });
     }

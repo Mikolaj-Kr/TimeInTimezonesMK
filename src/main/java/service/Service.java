@@ -3,7 +3,7 @@ package service;
 import Dto.TimeZoneInformationDto;
 import api.TimeZoneInformation;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.mashape.unirest.http.exceptions.UnirestException;
+import kong.unirest.UnirestException;
 import mapper.TimezoneMapper;
 import parser.ApiParser;
 
@@ -16,7 +16,7 @@ public class Service {
     private final ApiParser apiParser = new ApiParser();
     private final TimezoneMapper timezoneMapper = new TimezoneMapper();
 
-    public TimeZoneInformationDto getDateTimeForTimezone(String[] timezoneFromUser) {
+    public TimeZoneInformationDto getTimeZoneInformationDto(String[] timezoneFromUser) {
         String timezone = findTimezone(timezoneFromUser);
         if (timezone.equals("no results")) {
             System.out.println("no results, give as a parameter one of the time zone:");
@@ -35,13 +35,11 @@ public class Service {
         } catch (UnirestException | JsonProcessingException e) {
             System.out.println("API not available");
         }
-
-
         TimeZoneInformationDto timezoneInformationDto = timezoneMapper.mapTimezoneInformationToTimezoneInformationDto(timezoneInformation);
         return timezoneInformationDto;
     }
 
-    public List<String> getTimezones() {
+    private List<String> getTimezones() {
         List<String> timezonesList = new ArrayList<>();
         try {
             timezonesList.addAll(apiParser.getTimezonesFromApi());
@@ -63,6 +61,7 @@ public class Service {
                 singleParameterList.add(singleParameter);
             }
         }
+        singleParameterList.forEach(System.out::println);
         String timezone = searchForTimezoneInApi(singleParameterList);
         return timezone;
     }
@@ -85,8 +84,11 @@ public class Service {
                 correctTimeZone = "no results";
                 for (String timeZone : timezonesFromApi) {
                     if (timeZone.contains(userParameter)) {
-                        resultsNumber++;
-                        correctTimeZone = timeZone;
+                        String [] timezoneArray = timeZone.split("/");
+                        if(timezoneArray[timezoneArray.length-1].equals(userParameter)) {
+                            resultsNumber++;
+                            correctTimeZone = timeZone;
+                        }
                     }
                 }
                 if (resultsNumber == 1) {

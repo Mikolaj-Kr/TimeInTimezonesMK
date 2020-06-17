@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 public class Main {
     public static void main (String[] args) {
         Service service = new Service();
-        TimeZoneInformationDto timezoneInformationDto = service.getDateTimeForTimezone(args);
+        TimeZoneInformationDto timezoneInformationDto = service.getTimeZoneInformationDto(args);
         if(timezoneInformationDto != null) {
             LocalDateTime localDateTime = timezoneInformationDto.getDateTime();
             String timezone = timezoneInformationDto.getTimezone();

@@ -1,7 +1,8 @@
 import Dto.TimeZoneInformationDto;
 import api.TimeZoneInformation;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.mashape.unirest.http.exceptions.UnirestException;
+
+import kong.unirest.UnirestException;
 import mapper.TimezoneMapper;
 import org.junit.Assert;
 import org.junit.Test;

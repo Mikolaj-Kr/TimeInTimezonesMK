@@ -10,13 +10,10 @@ import java.time.LocalTime;
 public class TimezoneMapper {
 
     public TimeZoneInformationDto mapTimezoneInformationToTimezoneInformationDto(TimeZoneInformation timezoneInformation){
+        String timezone = timezoneInformation.getTimezone();
+        LocalDateTime localDateTime = mapDateTimeToLocalDateTime(timezoneInformation.getDateTime());
 
-        String datetime = timezoneInformation.getDateTime();
-        TimeZoneInformationDto timezoneInformationDto = new TimeZoneInformationDto();
-        timezoneInformationDto.setTimezone(timezoneInformation.getTimezone());
-        timezoneInformationDto.setDateTime(mapDateTimeToLocalDateTime(datetime));
-
-        return timezoneInformationDto;
+        return new TimeZoneInformationDto(timezone, localDateTime);
     }
 
     private LocalDateTime mapDateTimeToLocalDateTime(String datetime){
