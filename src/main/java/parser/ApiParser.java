@@ -18,8 +18,7 @@ public class ApiParser {
     public List<String> getTimezonesFromApi() throws UnirestException, JsonProcessingException {
 
         HttpResponse<String> response = Unirest.get(requestUri).asString();
-        return objectMapper.readValue(response.getBody(), new TypeReference<List<String>>() {
-        });
+        return objectMapper.readValue(response.getBody(), new TypeReference<List<String>>() {});
     }
 
     public TimeZoneInformation getTimezoneInformation(String timezone) throws UnirestException, JsonProcessingException {

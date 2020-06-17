@@ -8,13 +8,13 @@ public class ServiceTest {
     private final Service service = new Service();
 
     @Test
-    public void TestMethodGetTimeZoneInformationDtoForOthersFormOfParameters(){
+    public void TestMethodGetTimeZoneInformationDtoForOthersFormOfParameters() {
 
         //given
-        String [] sample1 = {"Warsaw"};
-        String [] sample2 = {"Europe/Warsaw"};
-        String [] sample3 = {"Europe Warsaw"};
-        String [] sample4 = {"Europe", "Warsaw"};
+        String[] sample1 = {"Warsaw"};
+        String[] sample2 = {"Europe/Warsaw"};
+        String[] sample3 = {"Europe Warsaw"};
+        String[] sample4 = {"Europe", "Warsaw"};
 
 
         //when
@@ -34,12 +34,12 @@ public class ServiceTest {
     }
 
     @Test
-    public void TestMethodGetTimeZoneInformationForOtherLocations(){
+    public void TestMethodGetTimeZoneInformationForOtherLocations() {
 
-//        given
-        String [] sample1 = {"GMT+7"};
-        String [] sample2 = {"Tell_City"};
-        String [] sample3 = {"WET"};
+        //given
+        String[] sample1 = {"GMT+7"};
+        String[] sample2 = {"Tell_City"};
+        String[] sample3 = {"WET"};
 
         //when
         TimeZoneInformationDto case1 = service.getTimeZoneInformationDto(sample1);

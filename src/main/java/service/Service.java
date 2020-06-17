@@ -17,7 +17,8 @@ public class Service {
     private final TimezoneMapper timezoneMapper = new TimezoneMapper();
 
     public TimeZoneInformationDto getTimeZoneInformationDto(String[] timezoneFromUser) {
-        String timezone = findTimezone(timezoneFromUser);
+
+        String timezone = findCorrectTimezone(timezoneFromUser);
         if (timezone.equals("no results")) {
             System.out.println("no results, give as a parameter one of the time zone:");
             List<String> timezones = getTimezones();
@@ -49,24 +50,18 @@ public class Service {
         return timezonesList;
     }
 
-    private String findTimezone(String[] timezoneFromUser) {
-        List<String> singleParameterList = new ArrayList<>();
+    private String findCorrectTimezone(String[] timezoneFromUser) {
+        List<String> userParameters = new ArrayList<>();
         for (String singleParameter : timezoneFromUser) {
             if (singleParameter.contains("/")) {
-                singleParameterList.addAll(Arrays.asList(singleParameter.split("/")));
-            } else if (singleParameter.contains(" ")){
-                singleParameterList.addAll(Arrays.asList(singleParameter.split(" ")));
-            }
-            else {
-                singleParameterList.add(singleParameter);
+                userParameters.addAll(Arrays.asList(singleParameter.split("/")));
+            } else if (singleParameter.contains(" ")) {
+                userParameters.addAll(Arrays.asList(singleParameter.split(" ")));
+            } else {
+                userParameters.add(singleParameter);
             }
         }
-        singleParameterList.forEach(System.out::println);
-        String timezone = searchForTimezoneInApi(singleParameterList);
-        return timezone;
-    }
 
-    private String searchForTimezoneInApi(List<String> userParameters) {
         List<String> timezonesFromApi = new ArrayList<>();
         int resultsNumber;
         String correctTimeZone = "no results";
@@ -84,8 +79,8 @@ public class Service {
                 correctTimeZone = "no results";
                 for (String timeZone : timezonesFromApi) {
                     if (timeZone.contains(userParameter)) {
-                        String [] timezoneArray = timeZone.split("/");
-                        if(timezoneArray[timezoneArray.length-1].equals(userParameter)) {
+                        String[] timezoneArray = timeZone.split("/");
+                        if (timezoneArray[timezoneArray.length - 1].equalsIgnoreCase(userParameter)) {
                             resultsNumber++;
                             correctTimeZone = timeZone;
                         }
