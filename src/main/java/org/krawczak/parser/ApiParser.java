@@ -12,8 +12,12 @@ import java.util.List;
 
 public class ApiParser {
 
-    private final ObjectMapper objectMapper = new ObjectMapper();
-    private final String requestUri = "http://worldtimeapi.org/api/timezone/";
+    private final ObjectMapper objectMapper;
+    private static final String requestUri = "http://worldtimeapi.org/api/timezone/";
+
+    public ApiParser() {
+        this.objectMapper = new ObjectMapper();
+    }
 
     public List<String> getTimezonesFromApi() throws UnirestException, JsonProcessingException {
 

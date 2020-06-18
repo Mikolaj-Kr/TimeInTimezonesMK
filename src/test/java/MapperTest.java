@@ -1,4 +1,4 @@
-import org.krawczak.Dto.TimeZoneInformationDto;
+import org.krawczak.dto.TimeZoneInformationDto;
 import org.krawczak.api.TimeZoneInformation;
 import com.fasterxml.jackson.core.JsonProcessingException;
 

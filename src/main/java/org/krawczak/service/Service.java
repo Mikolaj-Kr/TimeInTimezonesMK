@@ -1,6 +1,6 @@
 package org.krawczak.service;
 
-import org.krawczak.Dto.TimeZoneInformationDto;
+import org.krawczak.dto.TimeZoneInformationDto;
 import org.krawczak.api.TimeZoneInformation;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import kong.unirest.UnirestException;
@@ -13,8 +13,13 @@ import java.util.List;
 
 public class Service {
 
-    private final ApiParser apiParser = new ApiParser();
-    private final TimezoneMapper timezoneMapper = new TimezoneMapper();
+    private final ApiParser apiParser;
+    private final TimezoneMapper timezoneMapper;
+
+    public Service() {
+        this.apiParser = new ApiParser();
+        this.timezoneMapper = new TimezoneMapper();
+    }
 
     public TimeZoneInformationDto getTimeZoneInformationDto(String[] timezoneFromUser) {
 
@@ -55,6 +60,8 @@ public class Service {
         for (String singleParameter : timezoneFromUser) {
             if (singleParameter.contains("/")) {
                 userParameters.addAll(Arrays.asList(singleParameter.split("/")));
+            } else if (singleParameter.contains(" ")) {
+                userParameters.addAll(Arrays.asList(singleParameter.split(" ")));
             } else {
                 userParameters.add(singleParameter);
             }

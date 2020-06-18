@@ -1,7 +1,7 @@
 package org.krawczak;
 
 
-import org.krawczak.Dto.TimeZoneInformationDto;
+import org.krawczak.dto.TimeZoneInformationDto;
 import org.krawczak.service.Service;
 
 import java.time.LocalDateTime;

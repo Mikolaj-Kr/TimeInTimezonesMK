@@ -1,10 +1,8 @@
-import org.krawczak.Dto.TimeZoneInformationDto;
 import org.krawczak.api.TimeZoneInformation;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.junit.Assert;
 import org.junit.Test;
 import org.krawczak.parser.ApiParser;
-import org.krawczak.service.Service;
 
 public class ParserTest {
 
