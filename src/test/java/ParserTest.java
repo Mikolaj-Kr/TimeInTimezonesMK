@@ -1,13 +1,10 @@
-import Dto.TimeZoneInformationDto;
-import api.TimeZoneInformation;
+import org.krawczak.Dto.TimeZoneInformationDto;
+import org.krawczak.api.TimeZoneInformation;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.junit.Assert;
 import org.junit.Test;
-import parser.ApiParser;
-import service.Service;
-
-import java.util.ArrayList;
-import java.util.List;
+import org.krawczak.parser.ApiParser;
+import org.krawczak.service.Service;
 
 public class ParserTest {
 

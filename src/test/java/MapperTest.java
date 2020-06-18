@@ -1,12 +1,12 @@
-import Dto.TimeZoneInformationDto;
-import api.TimeZoneInformation;
+import org.krawczak.Dto.TimeZoneInformationDto;
+import org.krawczak.api.TimeZoneInformation;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
 import kong.unirest.UnirestException;
-import mapper.TimezoneMapper;
+import org.krawczak.mapper.TimezoneMapper;
 import org.junit.Assert;
 import org.junit.Test;
-import parser.ApiParser;
+import org.krawczak.parser.ApiParser;
 
 public class MapperTest {
 

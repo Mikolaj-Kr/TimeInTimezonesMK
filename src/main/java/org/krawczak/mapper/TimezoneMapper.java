@@ -1,7 +1,7 @@
-package mapper;
+package org.krawczak.mapper;
 
-import Dto.TimeZoneInformationDto;
-import api.TimeZoneInformation;
+import org.krawczak.Dto.TimeZoneInformationDto;
+import org.krawczak.api.TimeZoneInformation;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;

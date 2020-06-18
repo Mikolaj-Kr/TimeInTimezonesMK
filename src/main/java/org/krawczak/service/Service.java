@@ -1,11 +1,11 @@
-package service;
+package org.krawczak.service;
 
-import Dto.TimeZoneInformationDto;
-import api.TimeZoneInformation;
+import org.krawczak.Dto.TimeZoneInformationDto;
+import org.krawczak.api.TimeZoneInformation;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import kong.unirest.UnirestException;
-import mapper.TimezoneMapper;
-import parser.ApiParser;
+import org.krawczak.mapper.TimezoneMapper;
+import org.krawczak.parser.ApiParser;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -55,8 +55,6 @@ public class Service {
         for (String singleParameter : timezoneFromUser) {
             if (singleParameter.contains("/")) {
                 userParameters.addAll(Arrays.asList(singleParameter.split("/")));
-            } else if (singleParameter.contains(" ")) {
-                userParameters.addAll(Arrays.asList(singleParameter.split(" ")));
             } else {
                 userParameters.add(singleParameter);
             }

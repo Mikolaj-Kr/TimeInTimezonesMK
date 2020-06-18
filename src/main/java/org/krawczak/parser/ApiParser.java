@@ -1,6 +1,6 @@
-package parser;
+package org.krawczak.parser;
 
-import api.TimeZoneInformation;
+import org.krawczak.api.TimeZoneInformation;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;

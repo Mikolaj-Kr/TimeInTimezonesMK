@@ -1,4 +1,4 @@
-package Dto;
+package org.krawczak.Dto;
 
 import lombok.Data;
 
